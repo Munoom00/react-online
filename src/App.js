@@ -1,17 +1,14 @@
-import Footer from './components/Footer';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import Logo from './components/Logo';
-
+import './App.css';
 function App() {
   return (
-    <>
+    <div className="logo">
       <Logo />
       <Header />
-      <Footer title="TNI" website="www.google.com"
-       address="Bangkok" postcode={10250}
-       isOpen></Footer>
-
-    </>
+      <Footer title={"TNI"} website="www.google.com" address="Bangkok" postcode={10220} isOpen></Footer>
+    </div>
   );
 }
 
