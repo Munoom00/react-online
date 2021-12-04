@@ -9,7 +9,7 @@ const Footer = ({title, website, address, postcode, isOpen}) => {
     return (
         <div>
            <h1 style={styles.title}>{title} &copy; {new Date().getFullYear()}</h1>
-           <p style={{color:'green',fontSize: 18}}>{website} {address} {postcode} {isOpen.toString}</p>
+           <p style={{color:'pink',fontSize: 18}}>{website} {address} {postcode} {isOpen}</p>
            <p style={styles.title}>Tanva</p>
         </div>
     )
