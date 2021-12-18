@@ -1,13 +1,15 @@
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Logo from "./components/Logo";
+// import Logo from "./components/Logo";
 import "./App.css";
-import Sidebar from "./components/Sidebar";
-import Menu from "./components/Menu";
+// import Sidebar from "./components/Sidebar";
+// import Menu from "./components/Menu";
 import HomePage from "./components/pages/HomePage";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AboutPage from "./components/pages/AboutPage";
+import ProductPage from "./components/pages/ProductPage";
+import DetailPage from "./components/pages/DetailPage";
 function App() {
   return (
     <Router>
@@ -15,6 +17,12 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <HomePage />
+        </Route>
+        <Route path="/product">
+          <ProductPage />
+        </Route>
+        <Route path="/detail">
+          <DetailPage />
         </Route>
         <Route path="/about">
           <AboutPage />
