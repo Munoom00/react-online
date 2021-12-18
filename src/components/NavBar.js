@@ -32,6 +32,14 @@ const NavBar = () => {
               {" "}
               Product{" "}
             </NavLink>
+            <NavLink
+              className="nav-link"
+              activeClassName="active"
+              to="/contact"
+            >
+              {" "}
+              Contact Us{" "}
+            </NavLink>
             <NavLink className="nav-link" activeClassName="active" to="/about">
               {" "}
               About{" "}

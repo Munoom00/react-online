@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AboutPage from "./components/pages/AboutPage";
 import ProductPage from "./components/pages/ProductPage";
 import DetailPage from "./components/pages/DetailPage";
+import ContactUs from "./components/pages/ContactUs";
 function App() {
   return (
     <Router>
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/product">
           <ProductPage />
+        </Route>
+        <Route path="/contact">
+          <ContactUs />
         </Route>
         <Route path="/detail">
           <DetailPage />
