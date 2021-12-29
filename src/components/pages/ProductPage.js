@@ -76,8 +76,11 @@ const ProductPage = () => {
                         <Image src={p.picture} rounded width="60" />
                       </td>
                       <td>
-                        <Button href="/detail" variant="dark">
-                          Click ME <BiBookOpen />
+                        <Button
+                          href={`/detail/${p.id}/title/${p.title}`}
+                          variant="dark"
+                        >
+                          Click ME <BiBookOpen />{" "}
                         </Button>
                       </td>
                     </tr>
