@@ -11,9 +11,11 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom";
 
 const DetailPage = () => {
   const { id, title } = useParams();
+  const history = useHistory();
   const [detail, setDetail] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
@@ -60,12 +62,20 @@ const DetailPage = () => {
       <div className="row">
         <div className="col-md-12 mt-4">
           <h2>Detail Page</h2>
+          <Button
+            variant="primary"
+            onClick={() => {
+              history.goBack();
+            }}
+          >
+            Back
+          </Button>
           <div className="row">
             <CardDeck>
               {detail.length > 0 ? (
                 detail.map((d, index) => {
                   return (
-                    <div className="col-md-4" key={d.ch_id}>
+                    <div className="col-md-4 mt-4" key={d.ch_id}>
                       <Card className="mb-4 shadow-sm">
                         {/* <Card.Img variant="top" src="" /> */}
                         <Card.Body>
