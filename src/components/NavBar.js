@@ -46,6 +46,31 @@ const NavBar = () => {
                   News Category
                 </NavDropdown.Item>
               </NavDropdown>
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/upload"
+              >
+                Upload
+              </NavLink>
+            </Nav>
+            <Nav>
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/register"
+              >
+                Register
+              </NavLink>
+            </Nav>
+            <Nav>
+              <NavLink
+                className="nav-link"
+                activeClassName="active"
+                to="/login"
+              >
+                Login
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

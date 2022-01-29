@@ -12,37 +12,65 @@ import ProductPage from "./components/pages/ProductPage";
 import DetailPage from "./components/pages/DetailPage";
 import ContactUs from "./components/pages/ContactUs";
 import HospitalPage from "./components/hospital/HospitalPage";
-import category from "./components/hospital/category";
+import IndexPage from "./components/pages/category/IndexPage";
+import CreatePage from "./components/pages/category/CreatePage";
+import EditPage from "./components/pages/category/EditPage";
+import UploadPage from "./components/pages/category/UploadPage";
+import { ToastProvider } from "react-toast-notifications";
+import CategoryPage from "./components/pages/category/CategoryPage";
+import RegisterPage from "./components/pages/RegisterPage";
+import LoginPage from "./components/pages/LoginPage";
 
 function App() {
   return (
-    <Router>
-      <NavBar />
-      <Switch>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-        <Route path="/product">
-          <ProductPage />
-        </Route>
-        <Route path="/contact">
-          <ContactUs />
-        </Route>
-        <Route path="/detail/:id/title/:title">
-          <DetailPage />
-        </Route>
-        <Route path="/about">
-          <AboutPage />
-        </Route>
-        <Route path="/hospitalPage">
-          <HospitalPage />
-        </Route>
-        <Route path="/category">
-          <category />
-        </Route>
-      </Switch>
-      <Footer />
-    </Router>
+    <ToastProvider placement="top-center">
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="/about">
+            <AboutPage />
+          </Route>
+          <Route path="/product">
+            <ProductPage />
+          </Route>
+          <Route path="/contact">
+            <ContactUs />
+          </Route>
+          <Route path="/detail/:id/title/:title">
+            <DetailPage />
+          </Route>
+          <Route path="/hospital">
+            <HospitalPage />
+          </Route>
+          <Route path="/upload">
+            <UploadPage />
+          </Route>
+          <Route path="/Register">
+            <RegisterPage />
+          </Route>
+          <Route path="/Login">
+            <LoginPage />
+          </Route>
+          <Route
+            path="/category"
+            render={({ match: { url } }) => (
+              <>
+                <Route path={`${url}/`} exact>
+                  <CategoryPage />
+                </Route>
+                <Route path={`${url}/edit/:id`}>
+                  <EditPage />
+                </Route>
+              </>
+            )}
+          ></Route>
+        </Switch>
+        <Footer />
+      </Router>
+    </ToastProvider>
   );
 }
 
