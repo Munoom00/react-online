@@ -5,6 +5,17 @@ import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   const history = useHistory();
+  const [profile, setProfile] = React.useState(null);
+  const getProfile = () => {
+    // localStorage.getItem('profile')
+    const profilValue = JSON.parse(localStorage.getItem("profile"));
+    if (profilValue) {
+      setProfile(profilValue);
+    }
+  };
+  React.useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <div>
@@ -16,7 +27,7 @@ const NavBar = () => {
           {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="mr-auto">
               <NavLink className="nav-link" to="/" exact>
                 Home
               </NavLink>
@@ -54,24 +65,32 @@ const NavBar = () => {
                 Upload
               </NavLink>
             </Nav>
-            <Nav>
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/register"
-              >
-                Register
-              </NavLink>
-            </Nav>
-            <Nav>
-              <NavLink
-                className="nav-link"
-                activeClassName="active"
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </Nav>
+
+            {profile ? (
+              <span className="nav-text">
+                Welcom {profile.name}{" "}
+                <button className="btn btn-danger ml-2">Logout</button>
+              </span>
+            ) : (
+              <>
+                <Nav>
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/register"
+                  >
+                    Register
+                  </NavLink>
+                  <NavLink
+                    className="nav-link"
+                    activeClassName="active"
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                </Nav>
+              </>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
