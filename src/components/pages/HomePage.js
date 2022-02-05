@@ -1,7 +1,21 @@
 import React from "react";
 import { BsXOctagonFill } from "react-icons/bs";
+import { UserStoreContext } from "../../context/UserContext";
 
 const HomePage = () => {
+  const userStore = React.useContext(UserStoreContext);
+
+  const getProfile = () => {
+    const profileValue = JSON.parse(localStorage.getItem("profile"));
+    if (profileValue) {
+      userStore.updateProfile(profileValue);
+    }
+  };
+
+  React.useEffect(() => {
+    getProfile();
+  }, []);
+
   return (
     <div>
       <main role="main">
@@ -9,8 +23,16 @@ const HomePage = () => {
         <div className="jumbotron">
           <div className="container">
             <h1 className="display-3">
-              Hello, world! <BsXOctagonFill color="pink" />
+              Hello, world!
+              <BsXOctagonFill color="pink" />
             </h1>
+            <h2>
+              {userStore.profile ? (
+                <span className="nav-text">{userStore.profile.name}</span>
+              ) : (
+                <></>
+              )}
+            </h2>
             <p>
               This is a template for a simple marketing or informational
               website. It includes a large callout called a jumbotron and three
