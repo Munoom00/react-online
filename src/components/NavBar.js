@@ -3,10 +3,12 @@ import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { UserStoreContext } from "../context/UserContext";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const history = useHistory();
   const userStore = React.useContext(UserStoreContext);
+  const profileRedux = useSelector((state) => state.authReducer.profile);
   // const [profile, setProfile] = React.useState(null);
   const getProfile = () => {
     localStorage.getItem("profile");
@@ -78,7 +80,7 @@ const NavBar = () => {
                 activeClassName="active"
                 to="/member"
               >
-                Member
+                Member {profileRedux.name}
               </NavLink>
             </Nav>
 
