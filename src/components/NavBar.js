@@ -2,20 +2,22 @@ import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { UserStoreContext } from "../context/UserContext";
 
 const NavBar = () => {
   const history = useHistory();
-  const [profile, setProfile] = React.useState(null);
-  const getProfile = () => {
-    // localStorage.getItem('profile')
-    const profilValue = JSON.parse(localStorage.getItem("profile"));
-    if (profilValue) {
-      setProfile(profilValue);
-    }
-  };
-  React.useEffect(() => {
-    getProfile();
-  }, []);
+  const userStore = React.useContext(UserStoreContext);
+  // const [profile, setProfile] = React.useState(null);
+  // const getProfile = () => {
+  // localStorage.getItem('profile')
+  // const profilValue = JSON.parse(localStorage.getItem("profile"));
+  // if (profilValue) {
+  // setProfile(profilValue);
+  // }
+  //};
+  //React.useEffect(() => {
+  //  getProfile();
+  //}, []);
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("profile");
@@ -79,9 +81,9 @@ const NavBar = () => {
               </NavLink>
             </Nav>
 
-            {profile ? (
+            {userStore.profile ? (
               <span className="nav-text">
-                Welcom {profile.name}{" "}
+                Welcome {userStore.profile.name}{" "}
                 <button className="btn btn-danger ml-2" onClick={logout}>
                   Logout
                 </button>
