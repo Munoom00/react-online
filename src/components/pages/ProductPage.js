@@ -2,11 +2,18 @@ import React from "react";
 import { Table, Image, Badge, Spinner, Button } from "react-bootstrap";
 import axios from "axios";
 import { BiBookOpen } from "react-icons/bi";
+import { addToCart } from "../../redux/reducers/actions/cartAction";
+import { useSelector, useDispatch } from "react-redux";
 
 const ProductPage = () => {
   const [product, setProduct] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
+
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
+  const total = useSelector((state) => state.cartReducer.total);
+
   const getData = async () => {
     try {
       setLoading(true);
@@ -42,6 +49,16 @@ const ProductPage = () => {
     );
   }
 
+  const addCart = (p) => {
+    const product = {
+      id: p.id,
+      name: p.title,
+      price: p.view,
+      qty: 1,
+    };
+
+    dispatch(addToCart(product, cart));
+  };
   return (
     <div>
       <div className="container">
@@ -81,6 +98,13 @@ const ProductPage = () => {
                           variant="dark"
                         >
                           Click ME <BiBookOpen />{" "}
+                        </Button>
+                        <Button
+                          variant="outline-info"
+                          className="ml-2"
+                          onClick={() => addCart(p)}
+                        >
+                          Buy <BiBookOpen />
                         </Button>
                       </td>
                     </tr>
