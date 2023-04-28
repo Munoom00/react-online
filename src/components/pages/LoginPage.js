@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { useToasts } from "react-toast-notifications";
 import { UserStoreContext } from "../../context/UserContext";
 import { useDispatch } from "react-redux";
-import { updateProfile } from "../../redux/reducers/actions/authAction";
+import { updateProfile } from "../../redux/reducers/actions/authAction"; 
 
 const schema = yup
   .object({
